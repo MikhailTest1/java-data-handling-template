@@ -13,8 +13,11 @@ public class SimpleBigNumbersService implements BigNumbersService {
      */
     @Override
     public BigDecimal getPrecisionNumber(int a, int b, int range) {
-        return null;
+        BigDecimal firstNumber = BigDecimal.valueOf(a);
+        BigDecimal secondNumber = BigDecimal.valueOf(b);
+        return firstNumber.divide(secondNumber, range, BigDecimal.ROUND_HALF_UP);
     }
+
 
     /**
      * Метод находит простое число по номеру
@@ -24,6 +27,12 @@ public class SimpleBigNumbersService implements BigNumbersService {
      */
     @Override
     public BigInteger getPrimaryNumber(int range) {
-        return null;
+        BigInteger number = new BigInteger("2");
+        for (int i = 0; i < range; i++) {
+            number = number.nextProbablePrime();
+        }
+        return number;
     }
 }
+
+
